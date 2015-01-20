@@ -1,0 +1,15 @@
+name: FurnaceIndicator
+main: onebone\furnaceindicator\FurnaceIndicator
+version: "1.0"
+api:
+- 1.6.0
+author: onebone
+
+permissions:
+ furnaceindicator.*:
+  description: Includes all permissions related to FurnaceIndicator
+  children:
+   furnaceindicator.touch:
+    description: Allows player to touch protected furnace
+   furnaceindicator.break:
+    description: Allows player to break protected furnace
