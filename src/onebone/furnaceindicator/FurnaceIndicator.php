@@ -92,7 +92,7 @@ class FurnaceIndicator extends PluginBase implements Listener{
 
 	public function onTouch(PlayerInteractEvent $event){
 		$block = $event->getBlock();
-		if($block instanceof FurnaceBlock){
+		if($block->getID() === 61 or $block->getID() === 62){
 			if(isset($this->remain[$block->getX().":".$block->getY().":".$block->getZ().":".$block->getLevel()->getName()])){
 				$data = $this->remain[$block->getX().":".$block->getY().":".$block->getZ().":".$block->getLevel()->getName()];
 				$player = $event->getPlayer();

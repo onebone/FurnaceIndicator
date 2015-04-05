@@ -1,6 +1,6 @@
 name: FurnaceIndicator
 main: onebone\furnaceindicator\FurnaceIndicator
-version: "1.0"
+version: "1.1"
 api:
 - 1.6.0
 author: onebone
