@@ -10,7 +10,6 @@ use pocketmine\event\block\BlockBreakEvent;
 use pocketmine\inventory\FurnaceInventory;
 use pocketmine\inventory\SimpleTransactionGroup;
 use pocketmine\plugin\PluginBase;
-use pocketmine\scheduler\CallbackTask;
 
 class FurnaceIndicator extends PluginBase implements Listener{
 	/**
@@ -37,7 +36,8 @@ class FurnaceIndicator extends PluginBase implements Listener{
 					if(!isset($this->remain[$furnace->getX().":".$furnace->getY().":".$furnace->getZ().":".$furnace->getLevel()->getName()])){
 						if($ts->getTargetItem()->getID() !== 0){
 							$player = $transaction->getSource();
-							$scheduleId = $this->getServer()->getScheduler()->scheduleDelayedTask(new CallbackTask([$this, "finishSchedule"], [$furnace->getX().":".$furnace->getY().":".$furnace->getZ().":".$furnace->getLevel()->getName()]), 3600)->getTaskId();
+							//$scheduleId = $this->getServer()->getScheduler()->scheduleDelayedTask(new CallbackTask([$this, "finishSchedule"], [$furnace->getX().":".$furnace->getY().":".$furnace->getZ().":".$furnace->getLevel()->getName()]), 3600)->getTaskId();
+							$scheduleId = $this->getServer()->getScheduler()->scheduleDelayedTask(new FinishTask($this, $furnace->getX().":".$furnace->getY().":".$furnace->getZ().":".$furnace->getLevel()->getName()), 3600)->getTaskId();
 							$this->remain[$furnace->getX().":".$furnace->getY().":".$furnace->getZ().":".$furnace->getLevel()->getName()] = [
 								$player->getName(),
 								3600,
